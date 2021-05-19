@@ -1,9 +1,9 @@
-package edu.pingpong.restservicequarkus;
+package edu.pingpong.rest.json;
 
 import io.quarkus.test.junit.NativeImageTest;
 
 @NativeImageTest
-public class NativeAppIT extends AppTest {
+public class NativeFruitResourceIT extends FruitResourceTest {
 
     // Execute the same tests but in native mode.
 }

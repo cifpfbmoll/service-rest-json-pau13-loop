@@ -1,12 +1,12 @@
-package edu.pingpong.restservicequarkus;
+package edu.pingpong.rest.json;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/")
-public class App {
+@Path("/fruits")
+public class FruitResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
