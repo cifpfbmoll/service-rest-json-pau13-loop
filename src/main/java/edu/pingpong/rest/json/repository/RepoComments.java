@@ -24,7 +24,7 @@ public class RepoComments {
         comments.clear();
         comments.add(new Comments("Pau", "Lorem Ipsum"));
         comments.add(new Comments("Olivia", "Roses are red and violets are blue"));
-        comments.add(new Comments("Tayler", "I'm so glad that I'm not in a relationship with you"));
+        comments.add(new Comments("Tyler", "I'm so glad that I'm not in a relationship with you"));
     }
 
     public Set<Comments> list() {

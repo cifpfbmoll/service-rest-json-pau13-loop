@@ -45,7 +45,7 @@ public class ServiceComments {
     }
 
     // Add the needed logic in case the var is blank 
-    public Optional<Comments> get(String name) {
+    public Optional<Comments> getComment(String name) {
         return name.isBlank()? Optional.ofNullable(null) : repo.get(name);
     }
 }
