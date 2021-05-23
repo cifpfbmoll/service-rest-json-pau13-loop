@@ -1,6 +1,5 @@
 package edu.pingpong.rest.json.repository;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Optional;
@@ -16,6 +15,8 @@ public class RepoComments {
     
     // How to read this line ?
     private Set<Comments> comments = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
+
+    public RepoComments() {}
 
     @PostConstruct
     public void init() {
