@@ -16,8 +16,6 @@ import javax.ws.rs.core.Response;
 
 import edu.pingpong.rest.json.domain.Comments;
 import edu.pingpong.rest.json.service.ServiceComments;
-import jdk.nashorn.internal.objects.annotations.Getter;
-
 
 @Path("/comments")
 public class ResourceComments {

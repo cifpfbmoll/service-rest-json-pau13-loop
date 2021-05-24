@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.xml.stream.events.Comment;
 
 import edu.pingpong.rest.json.domain.Comments;
 import edu.pingpong.rest.json.repository.RepoComments;
