@@ -5,65 +5,137 @@ This project has been created with the command:
     mvn io.quarkus:quarkus-maven-plugin:1.13.1.Final:create -DprojectGroupId=edu.pingpong -DprojectArtifactId=restservicequarkus -DclassName="edu.pingpong.rest.json.FruitResource" -Dpath="/fruits" -Dextensions="resteasy,resteasy-jackson"
 ´´´
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
+This command is to genereate the same qurakus project bu0t with the jsonB dependency instead jackson:
+```
+    mvn io.quarkus:quarkus-maven-plugin:1.13.1.Final:create -DprojectGroupId=edu.pingpong -DprojectArtifactId=restservicequarkus -DclassName="edu.pingpong.rest.json.FruitResource" -Dpath="/fruits" -Dextensions="resteasy-jsonb"
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+>This project uses Quarkus, the Supersonic Subatomic Java Framework.</br>
+>If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
-## Packaging and running the application
+To create you first quarkus project run the following command:
 
-The application can be packaged using:
-```shell script
-./mvnw package
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
+    mvn io.quarkus:quarkus-maven-plugin:1.13.1.Final:create -DprojectGroupId=edu.pingpong -DprojectArtifactId=quarkusgettingstarted -DclassName="edu.pingpong.quickstart.GreetingResource" -Dpath="/hello"
 ```
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
+To run your application once has been created:
+```
+    mvnw compile quarkus:dev
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+---
+
+## Table of Contents
+
+1. [What means Development mode](#what-means-development-mode)
+1. [Run Test Cases](#run-test-cases)
+1. [Packaging and run the application](#packaging-and-run-the-application)
+1. [Native](#native)
+1. [Install Dependencies](#install-dependencies)
+1. [Remember](#remember)
+1. [External resources](#external-resources)
+
+## What means Development mode 
+
+```
+quarkus:dev
 ```
 
-You can then execute your native executable with: `./target/restservicequarkus-1.0.0-SNAPSHOT-runner`
+- quarkus:dev runs Quarkus in development mode. This enables hot deployment with background compilation, which means that when you modify your Java files and/or your resource files and refresh your browser, these changes will automatically take effect. 
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
+---
 
-## Related guides
+**[⬆ back to top](#table-of-contents)**
 
-- RESTEasy JAX-RS ([guide](https://quarkus.io/guides/rest-json)): REST endpoint framework implementing JAX-RS and more
+## Run Test Cases
 
-## Provided examples
+```
+    mnw test
+```
 
-### RESTEasy JAX-RS example
+You can run it by this command on your cmd or directly from your IDE.
 
-REST is easy peasy with this Hello World RESTEasy resource.
+> **By default, tests will run on port 8081 so as not to conflict with the running application.**
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+---
 
-### RESTEasy JSON serialisation using Jackson
+**[⬆ back to top](#table-of-contents)**
 
-This example demonstrate RESTEasy JSON serialisation by letting you list, add and remove quark types from a list. Quarked!
+## Packaging and run the application
 
-[Related guide section...](https://quarkus.io/guides/rest-json#creating-your-first-json-rest-service)
+To make a package of the application:
+```
+    mvnw package
+```
+
+This will produce several outputs in the direcotry ```/target``` :
+
+- ```getting-started-1.0.0-SNAPSHOT.jar``` - containing just the classes and resources of the projects, it’s the regular artifact produced by the Maven build - **IT IS NOT THE RUNNABLE JAR**;
+
+- the ```quarkus-app``` directory which contains the ```quarkus-run.jar``` jar file - **BEING AN EXECUTABLE JAR**.
+
+You can run the application bust just running the following command:
+```
+    java -jar target/quarkus-app/quarkus-run.jar
+```
+
+---
+
+**[⬆ back to top](#table-of-contents)**
+
+## Native 
+
+You can create a native executable on windowns with the below command:
+```
+    mvnw package -Pnative -Dquarkus.native.container-build=true
+```
+
+> This allows you to create a native app without Graal by just using Mandrel.
+
+And now to **compile the native app** you have to create a container to do so:
+```
+    mvnw package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
+```
+
+---
+
+**[⬆ back to top](#table-of-contents)**
+
+## Install Dependencies
+
+To list all the available dependencies for Quarkus:
+```
+    mvnw quarkus:list-extensions
+```
+
+To add a dependencies/extensions by name:
+```
+    mvnw quarkus:add-extension -Dextensions="<name ext>"
+```
+
+---
+
+**[⬆ back to top](#table-of-contents)**
+
+## Remember 
+
+#### (Try not forget this concepts !)
+
+- If you want to deploy your application somewhere (typically in a container), you need to deploy the whole ```quarkus-app``` directory
+
+- Before running the application, don’t forget to stop the hot reload mode (hit ```CTRL+C```), or you will have a port conflict.
+
+---
+
+**[⬆ back to top](#table-of-contents)**
+
+## External resources
+
+- To test your quarkus application:
+
+> https://github.com/rest-assured/rest-assured/wiki/Usage#response-body
+
+---
+
+**[⬆ back to top](#table-of-contents)**
