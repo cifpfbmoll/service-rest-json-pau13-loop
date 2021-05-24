@@ -2,7 +2,7 @@
 
 This project has been created with the command:
 ´´´
-    mvn io.quarkus:quarkus-maven-plugin:1.13.1.Final:create -DprojectGroupId=edu.pingpong -DprojectArtifactId=restservicequarkus -DclassName="edu.pingpong.rest.json.FruitResource" -Dpath="/fruits" -Dextensions="resteasy,resteasy-jackson"
+    mvn io.quarkus:quarkus-maven-plugin:1.13.1.Final:create -DprojectGroupId=edu.pingpong -DprojectArtifactId=restservicequarkus -DclassName="edu.pingpong.rest.json.CommentsResource" -Dpath="/comments" -Dextensions="quarkus-rest-client-jackson, quarkus-hibernate-orm"
 ´´´
 
 This command is to genereate the same qurakus project bu0t with the jsonB dependency instead jackson:
